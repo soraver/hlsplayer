@@ -3,7 +3,7 @@ url=$1
 lifara=/tmp/`date +%s`.fifo
 rm $lifara
 mkfifo $lifara
-mplayer -loop 0 $lifara &
+tail -f $lifara|mplayer -loop 0 - &
 last=''
 while [ 1 == 1 ];do
   u=`curl -s $url|tail -1`
